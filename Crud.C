@@ -54,6 +54,5 @@ char genero[100];
 int main()
 {
      menu();
-
-      return 0;
+     system("pause");
 }
