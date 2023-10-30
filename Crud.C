@@ -5,7 +5,15 @@ int menu()
 {
      int alternativa;
 
-     printf("Seja bem-vindos a loja All T-Shirt!!\n\n Menu principal:\n\n 1-Adiconar um novo registro\n 2-Listar todos os registros\n 3-Atualizar as informacoes do registro\n 4-Excluir um registro\n 0-Sair do programa\n\n");
+     printf("****************************************\n");
+     printf("*Seja bem-vindos a loja All T-Shirt!!  *\n*                                      *\n");
+     printf("*Menu principal:                       *\n*                                      *\n");
+     printf("*1-Adiconar um novo registro           *\n"); 
+     printf("*2-Listar todos os registros           *\n"); 
+     printf("*3-Atualizar as informacoes do registro*\n"); 
+     printf("*4-Excluir um registro                 *\n"); 
+     printf("*0-Sair do programa                    *\n"); 
+     printf("****************************************\n");
 
      scanf("%d", &alternativa);
 
