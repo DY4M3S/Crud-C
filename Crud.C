@@ -4,10 +4,10 @@
 
 struct Estoque
 {
-     char marca[100];
-     char modelo[100];
-     char tamanho[100];
-     char genero[100];
+     char marca[1000];
+     char modelo[1000];
+     char tamanho[1000];
+     char genero[1000];
      float preco;
 };
 
@@ -22,57 +22,100 @@ void lista()
      int i;
      for (i = 1; i < 1001; i++)
      {
-
-          printf("Lista dos registros(%d)\n\n", i);
+          printf("\nLista dos registros(%d)\n\n", i);
           printf("Marca: %s\n", produto[i].marca);
           printf("Modelo: %s\n", produto[i].modelo);
           printf("Tamanho: %s\n", produto[i].tamanho);
           printf("Genero: %s\n", produto[i].genero);
-          printf("Preco: %2.f\n\n", produto[i].marca);
-     }
-}
+          printf("Preco: %.2f\n\n", produto[i].preco);
 
-void add()
-{
-     int i;
-
-     for (i = 1; i < 1001; i++)
-     {
-          printf("\nAdicionar novos registros (%d):\n\n ", i);
-          printf("\nMarca:\n\n");
-          scanf("%s", &produto[i].marca);
-          fflush(stdin);
-          printf("\n\nModelo:\n\n");
-          scanf("%s", &produto[i].modelo);
-          fflush(stdin);
-          printf("\nTamanho:\n\n");
-          scanf("%s", &produto[i].tamanho);
-          fflush(stdin);
-          printf("\nGenero:\n\n");
-          scanf("%s", &produto[i].genero);
-          fflush(stdin);
-          printf("\nPreco:\n\n");
-          scanf("%2.f", &produto[i].preco);
-          fflush(stdin);
-
-          printf("\nDeseja voltar para menu pricipal? 1-sim, 2-nao e 0-sair\n\n");
+          printf("\nDeseja voltar para menu pricipal? 1-sim, 2-proximo item e -sair\n\n");
           int input;
           scanf("%d", &input);
 
-          if (input == 1)
+          if (input==1)
           {
                menu();
           }
-          else if (input == 0)
+          else if(input==2)
+          {
+               continue;
+          }
+          else if (input != 1 && input != 2 && input != 0)
+          {
+               printf("\nNao existe essa opcao\n\n");
+               system("pause");
+               menu();
+          }
+          else if (input==0)
           {
                exit(0);
           }
      }
-     system("cls");
 }
+
+
+void add()
+{
+    int i;
+
+    for (i = 1; i < 1001; i++)
+    {
+     printf("\nAdicionar novos registros (%d):\n\n", i);
+
+     int input;
+     fflush(stdin);
+
+        printf("\nMarca:\n\n");
+        fgets(produto[i].marca, sizeof(produto[i].marca), stdin);
+        produto[i].marca[strcspn(produto[i].marca, "\n")] = '\0'; 
+
+        printf("\nModelo:\n\n");
+        fgets(produto[i].modelo, sizeof(produto[i].modelo), stdin);
+        produto[i].modelo[strcspn(produto[i].modelo, "\n")] = '\0';
+
+        printf("\nTamanho:\n\n");
+        fgets(produto[i].tamanho, sizeof(produto[i].tamanho), stdin);
+        produto[i].tamanho[strcspn(produto[i].tamanho, "\n")] = '\0';
+
+        printf("\nGenero:\n\n");
+        fgets(produto[i].genero, sizeof(produto[i].genero), stdin);
+        produto[i].genero[strcspn(produto[i].genero, "\n")] = '\0';
+
+        printf("\nPreco:\n\n");
+        scanf("%f", &produto[i].preco);
+        fflush(stdin);
+
+        printf("\nDeseja voltar para o menu principal? 1-sim, 2-nao e 0-sair\n\n");
+        scanf("%d", &input);
+        fflush(stdin);
+
+        if (input==1)
+        {
+          menu();
+          
+        }
+        else if(input==2)
+        {
+          continue;
+        }
+        else if(input !=1 && input !=2 && input !=0)
+        {
+          printf("\nNao existe essa opcao\n\n");
+          system("pause");
+          menu(); 
+        }
+        else if (input == 0)
+        {
+            exit(0);
+        }
+    }
+}
+
 
 int menu()
 {
+     system("cls");
      int alternativa;
 
      printf("****************************************\n");
@@ -90,20 +133,22 @@ int menu()
      switch (alternativa)
      {
      case 1:
+          system("cls");
           add();
           break;
 
      case 2:
+          system("cls");
           lista();
           break;
 
      case 3:
-          printf("Atualizar as informacoes do registro\n\n");
-          break;
+          //printf("Atualizar as informacoes do registro\n\n");
+          //break;
 
      case 4:
-          printf("Excluir um registro\n\n");
-          break;
+          //printf("Excluir um registro\n\n");
+          //break;
 
      case 0:
           exit(0);
