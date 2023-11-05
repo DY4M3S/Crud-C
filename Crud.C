@@ -17,6 +17,8 @@ Estoque produto[1001];
 
 int menu();
 
+int ultimoRegistro;
+
 void lista()
 {
      int i;
@@ -29,7 +31,7 @@ void lista()
           printf("Genero: %s\n", produto[i].genero);
           printf("Preco: %.2f\n\n", produto[i].preco);
 
-          printf("\nDeseja voltar para menu pricipal? 1-sim, 2-proximo item e -sair\n\n");
+          printf("\nDeseja voltar para menu pricipal? 1-sim, 2-proximo item e 0-sair\n\n");
           int input;
           scanf("%d", &input);
 
@@ -61,6 +63,12 @@ void add()
 
     for (i = 1; i < 1001; i++)
     {
+
+     if(ultimoRegistro>i)
+     {
+          i=ultimoRegistro+1;
+     }
+
      printf("\nAdicionar novos registros (%d):\n\n", i);
 
      int input;
@@ -92,8 +100,8 @@ void add()
 
         if (input==1)
         {
+          ultimoRegistro=i;
           menu();
-          
         }
         else if(input==2)
         {
@@ -103,9 +111,10 @@ void add()
         {
           printf("\nNao existe essa opcao\n\n");
           system("pause");
+          ultimoRegistro=i;
           menu(); 
         }
-        else if (input == 0)
+        else if (input==0)
         {
             exit(0);
         }
