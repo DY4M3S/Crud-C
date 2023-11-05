@@ -31,7 +31,7 @@ void lista()
           printf("Genero: %s\n", produto[i].genero);
           printf("Preco: %.2f\n\n", produto[i].preco);
 
-          printf("\nDeseja voltar para menu pricipal? 1-sim, 2-proximo item e 0-sair\n\n");
+          printf("\nDeseja voltar para menu pricipal? 1-sim, 2-proximo item e 0-sair do programa\n\n");
           int input;
           scanf("%d", &input);
 
@@ -93,7 +93,7 @@ void add()
           scanf("%f", &produto[i].preco);
           fflush(stdin);
 
-          printf("\nDeseja voltar para o menu principal? 1-sim, 2-continuar adicionado e 0-sair\n\n");
+          printf("\nDeseja voltar para o menu principal? 1-sim, 2-continuar adicionado e 0-sair do programa\n\n");
           scanf("%d", &input);
           fflush(stdin);
 
