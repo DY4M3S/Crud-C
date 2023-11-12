@@ -29,6 +29,8 @@ void atualizar()
      
       for (i=1; i < 1001; i++)
      {
+          system("cls");
+     
           if(opcao==i)
           {
           printf("\nAtualziar novos registros:\n\n");
@@ -56,25 +58,26 @@ void atualizar()
           scanf("%f", &produto[i].preco);
           fflush(stdin);
 
-          printf("\nDeseja voltar para o menu principal? 1-sim, 2-continuar adicionado e 0-sair do programa\n\n");
+          printf("\nDeseja voltar para o menu principal? 1-sim, 2-voltar atualizar e 0-sair do programa\n\n");
           scanf("%d", &input);
           fflush(stdin);
 
-          if (input == 1)
+          if (input==1)
           {
                menu();
+               system("cls");
           }
-          else if (input == 2)
+          else if (input==2)
           {
-               continue;
+               atualizar();
           }
-          else if (input != 1 && input != 2 && input != 0)
+          else if (input !=1 && input !=2 && input !=0)
           {
                printf("\nNao existe essa opcao\n\n");
                system("pause");
                menu();
           }
-          else if (input == 0)
+          else if (input==0)
           {
                exit(0);
           }
@@ -88,7 +91,7 @@ void atualizar()
 void lista()
 {
      int i;
-     for (i = 1; i < 1001; i++)
+     for (i=1; i < 1001; i++)
      {
           printf("\nLista dos registros(%d)\n\n", i);
           printf("Marca: %s\n", produto[i].marca);
@@ -101,21 +104,21 @@ void lista()
           int input;
           scanf("%d", &input);
 
-          if (input == 1)
+          if (input==1)
           {
                menu();
           }
-          else if (input == 2)
+          else if (input==2)
           {
                continue;
           }
-          else if (input != 1 && input != 2 && input != 0)
+          else if (input !=1 && input !=2 && input !=0)
           {
                printf("\nNao existe essa opcao\n\n");
                system("pause");
                menu();
           }
-          else if (input == 0)
+          else if (input==0)
           {
                exit(0);
           }
@@ -129,9 +132,9 @@ void add()
      for (i = 1; i < 1001; i++)
      {
 
-          if (ultimoRegistro >= i)
+          if (ultimoRegistro >=i)
           {
-               i = ultimoRegistro + 1;
+               i=ultimoRegistro+1;
           }
 
           printf("\nAdicionar novos registros (%d):\n\n", i);
@@ -163,23 +166,23 @@ void add()
           scanf("%d", &input);
           fflush(stdin);
 
-          if (input == 1)
+          if (input==1)
           {
-               ultimoRegistro = i;
+               ultimoRegistro=i;
                menu();
           }
-          else if (input == 2)
+          else if (input==2)
           {
                continue;
           }
-          else if (input != 1 && input != 2 && input != 0)
+          else if (input !=1 && input !=2 && input !=0)
           {
-               ultimoRegistro = i;
+               ultimoRegistro=i;
                printf("\nNao existe essa opcao\n\n");
                system("pause");
                menu();
           }
-          else if (input == 0)
+          else if (input==0)
           {
                exit(0);
           }
