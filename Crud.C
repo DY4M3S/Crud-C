@@ -19,6 +19,72 @@ int menu();
 
 int ultimoRegistro;
 
+void atualizar()
+{
+     int i;
+
+     int opcao;
+     printf("\nQual item deseja selecionar?\n\n");
+     scanf("%d", &opcao);
+     
+      for (i=1; i < 1001; i++)
+     {
+          if(opcao==i)
+          {
+          printf("\nAtualziar novos registros:\n\n");
+
+          int input;
+          fflush(stdin);
+
+          printf("\nMarca:\n\n");
+          fgets(produto[i].marca, sizeof(produto[i].marca), stdin);
+          produto[i].marca[strcspn(produto[i].marca, "\n")] = '\0';
+
+          printf("\nModelo:\n\n");
+          fgets(produto[i].modelo, sizeof(produto[i].modelo), stdin);
+          produto[i].modelo[strcspn(produto[i].modelo, "\n")] = '\0';
+
+          printf("\nTamanho:\n\n");
+          fgets(produto[i].tamanho, sizeof(produto[i].tamanho), stdin);
+          produto[i].tamanho[strcspn(produto[i].tamanho, "\n")] = '\0';
+
+          printf("\nGenero:\n\n");
+          fgets(produto[i].genero, sizeof(produto[i].genero), stdin);
+          produto[i].genero[strcspn(produto[i].genero, "\n")] = '\0';
+
+          printf("\nPreco:\n\n");
+          scanf("%f", &produto[i].preco);
+          fflush(stdin);
+
+          printf("\nDeseja voltar para o menu principal? 1-sim, 2-continuar adicionado e 0-sair do programa\n\n");
+          scanf("%d", &input);
+          fflush(stdin);
+
+          if (input == 1)
+          {
+               menu();
+          }
+          else if (input == 2)
+          {
+               continue;
+          }
+          else if (input != 1 && input != 2 && input != 0)
+          {
+               printf("\nNao existe essa opcao\n\n");
+               system("pause");
+               menu();
+          }
+          else if (input == 0)
+          {
+               exit(0);
+          }
+          }else
+          {
+               printf("\nRegistro nao encontrado\n\n");
+          }
+     }
+}    
+
 void lista()
 {
      int i;
@@ -149,9 +215,10 @@ int menu()
           lista();
           break;
 
-          // case 3:
-          //  printf("Atualizar as informacoes do registro\n\n");
-          //  break;
+      case 3:
+          system("cls");
+          atualizar();
+          break;
 
           // case 4:
           //  printf("Excluir um registro\n\n");
