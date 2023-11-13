@@ -19,6 +19,60 @@ int menu();
 
 int ultimoRegistro;
 
+void excluir(){
+
+ int i;
+
+     int opcao;
+     printf("\nQual item deseja excluir?\n\n");
+     scanf("%d", &opcao);
+
+     for (i=1; i < 1001; i++)
+     {
+          system("cls");
+     
+          if(opcao==i)
+          {
+
+          fflush(stdin);
+
+          produto[opcao].marca[0] = '\0';
+          produto[opcao].modelo[0] = '\0';
+          produto[opcao].tamanho[0] = '\0';
+          produto[opcao].genero[0] = '\0';
+          produto[opcao].preco = 0.0;
+
+          printf("\nDeseja voltar para o menu principal? 1-sim, 2-continue excluindo e 0-sair do programa\n\n");
+          scanf("%d", &input);
+          fflush(stdin);
+
+          if (input==1)
+          {
+               menu();
+               system("cls");
+          }
+          else if (input==2)
+          {
+               continue;
+          }
+          else if (input !=1 && input !=2 && input !=0)
+          {
+               printf("\nNao existe essa opcao\n\n");
+               system("pause");
+               menu();
+          }
+          else if (input==0)
+          {
+               exit(0);
+          }
+          }else
+          {
+               printf("\nRegistro nao encontrado\n\n");
+          }
+     }
+
+}
+
 void atualizar()
 {
      int i;
@@ -223,9 +277,10 @@ int menu()
           atualizar();
           break;
 
-          // case 4:
-          //  printf("Excluir um registro\n\n");
-          //  break;
+     case 4:
+          system("cls");
+          excluir();
+          break;
 
      case 0:
           exit(0);
